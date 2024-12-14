@@ -1,0 +1,8 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #1e1e2f;
+    color: #f4f4f4;
+    display: flex;
+}
+/* Additional CSS styling from the original */

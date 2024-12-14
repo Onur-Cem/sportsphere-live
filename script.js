@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const showFavorites = document.getElementById('showFavorites');
     const liveTime = document.getElementById('live-time');
 
-    let previousScores = {};
     let favoriteMatches = new Set();
 
     function updateTime() {
@@ -29,11 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const data = await response.json();
 
             if (data.response && data.response.length > 0) {
-                const filteredScores = leagueFilter.value
-                    ? data.response.filter(match => match.league.country === leagueFilter.value)
-                    : data.response;
-
-                const groupedByLeague = filteredScores.reduce((groups, match) => {
+                const groupedByLeague = data.response.reduce((groups, match) => {
                     if (!groups[match.league.name]) {
                         groups[match.league.name] = [];
                     }
@@ -43,34 +38,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 scoresList.innerHTML = Object.keys(groupedByLeague).map(league => {
                     const matches = groupedByLeague[league]
-                        .map(match => {
-                            const isFavorite = favoriteMatches.has(match.fixture.id);
-                            return `
-                                <div class="match" id="match-${match.fixture.id}">
-                                    <span class="favorite" onclick="toggleFavorite('${match.fixture.id}')">
-                                        ${isFavorite ? '★' : '☆'}
-                                    </span>
-                                    <div class="team home">
-                                        <img src="${match.teams.home.logo}" alt="${match.teams.home.name} Logo">
-                                        <p>${match.teams.home.name}</p>
-                                    </div>
-                                    <div class="score">
-                                        <p>${match.goals.home} - ${match.goals.away}</p>
-                                    </div>
-                                    <div class="team away">
-                                        <p>${match.teams.away.name}</p>
-                                        <img src="${match.teams.away.logo}" alt="${match.teams.away.name} Logo">
-                                    </div>
-                                </div>
-                            `;
-                        }).join('');
+                        .map(match => `
+                            <div class="match">
+                                <p>${match.teams.home.name} vs ${match.teams.away.name}</p>
+                                <p>${match.goals.home} - ${match.goals.away}</p>
+                            </div>
+                        `).join('');
 
-                    return `
-                        <div class="league-group">
-                            <h3>${league}</h3>
-                            ${matches}
-                        </div>
-                    `;
+                    return `<div class="league-group"><h3>${league}</h3>${matches}</div>`;
                 }).join('');
             } else {
                 scoresList.innerHTML = "<p>Keine Live-Spiele verfügbar</p>";
@@ -80,23 +55,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    function toggleFavorite(matchId) {
-        if (favoriteMatches.has(matchId)) {
-            favoriteMatches.delete(matchId);
-        } else {
-            favoriteMatches.add(matchId);
-        }
-        fetchScores();
-    }
-
     leagueFilter.addEventListener('change', fetchScores);
-    showFavorites.addEventListener('change', () => {
-        fetchScores();
-    });
 
     setInterval(updateTime, 1000);
-    setInterval(fetchScores, 10000);
-
-    updateTime();
     fetchScores();
 });
