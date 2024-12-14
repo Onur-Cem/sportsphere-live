@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportSphere Live</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="logo.png" alt="SportSphere Logo" class="logo-image">
+                <h1 class="logo">SportSphere</h1>
+            </div>
+            <div class="live-time" id="live-time"></div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#fussball">Fußball</a></li>
+                    <li><a href="#basketball">Basketball</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="live-scores">
+            <div class="section-header">
+                <h2>Fußball Live-Ticker</h2>
+                <div class="filter-options">
+                    <label for="leagueFilter">Wähle eine Liga:</label>
+                    <select id="leagueFilter">
+                        <option value="">Alle Ligen</option>
+                        <option value="Germany">Deutschland</option>
+                        <option value="England">England</option>
+                        <option value="Spain">Spanien</option>
+                        <option value="Italy">Italien</option>
+                    </select>
+                </div>
+                <div class="filter-favorites">
+                    <label for="showFavorites">
+                        <input type="checkbox" id="showFavorites"> Nur Favoriten anzeigen
+                    </label>
+                </div>
+            </div>
+            <div class="scores-list">
+                <!-- Live Scores werden hier dynamisch geladen -->
+            </div>
+        </section>
+        <section id="stats">
+            <div class="section-header">
+                <h2>Statistiken</h2>
+            </div>
+            <div class="stats-container">
+                <!-- Statistiken werden hier dynamisch geladen -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 SportSphere. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+</body>
+</html>

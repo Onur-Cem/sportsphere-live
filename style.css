@@ -1,0 +1,150 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #1e1e2f;
+    color: #f4f4f4;
+}
+
+header {
+    background-color: #23233a;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+}
+
+.logo {
+    color: #00ff99;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.live-time {
+    color: #f4f4f4;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #f4f4f4;
+    font-weight: bold;
+}
+
+.nav-menu li a:hover {
+    color: #00ff99;
+}
+
+main {
+    padding: 100px 20px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-options, .filter-favorites {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.scores-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.league-group {
+    margin-bottom: 30px;
+}
+
+.league-group h3 {
+    color: #00ff99;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.league-group .match {
+    background-color: #2a2a40;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.league-group .match .team {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.league-group .match .team img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.league-group .match .score {
+    font-size: 20px;
+    font-weight: bold;
+    color: #00ff99;
+}
+
+.league-group .match .favorite {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #23233a;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.footer-container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.footer-container p {
+    margin: 0;
+    color: #888;
+    font-size: 14px;
+}
